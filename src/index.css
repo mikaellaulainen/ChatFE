@@ -1,4 +1,7 @@
-.message{
-  border: 1px solid #000000;
-  margin-top: .5em;
+.no-account{
+  text-decoration: none;
+  color: grey;
+}
+.no-account:hover{
+  color:black;
 }

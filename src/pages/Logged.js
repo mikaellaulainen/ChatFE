@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import { Link, Navigate } from 'react-router-dom'
 import Message from '../components/Message'
 import chatService from '../services/chatting'
@@ -33,12 +35,12 @@ const Logged = ({ user }) => {
     <div className="App">
       <p>Hello {user}!</p>
       <Link to="/">
-        <button>Logout</button>
+        <Button>Logout</Button>
       </Link>
-      <form onSubmit={sendMessage} action="submit">
-        <input type="text" value={messageToSend} onChange={({ target }) => setMessageToSend(target.value)}/>
-        <button>submit</button>
-      </form>
+      <Form className='my-3 mx-auto border p-3 col-11 bg-dark' onSubmit={sendMessage}>
+        <Form.Control as="textarea" rows={2} type="text" value={messageToSend} onChange={({ target }) => setMessageToSend(target.value)}/>
+        <Button type="submit" className='my-3'>Send</Button>
+      </Form>
       {messages.map(data => (
         <Message key={data._id} data={data}/>
       ))}
