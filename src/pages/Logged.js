@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router-dom'
 import Message from '../components/Message'
 import chatService from '../services/chatting'
 
-const Logged = ({ user }) => {
+const Logged = ({ username }) => {
   const [messageToSend,setMessageToSend] = useState('')
   const [messages,setMessages] = useState([])
   useEffect(() => {
@@ -19,7 +19,7 @@ const Logged = ({ user }) => {
     e.preventDefault()
     console.log(`Sending message ${messageToSend}`)
     const messageObject = {
-      user: user,
+      user: username,
       message: messageToSend
     }
     chatService.sendMessage(messageObject).then(res => {
@@ -28,12 +28,12 @@ const Logged = ({ user }) => {
       setMessageToSend('')
     })
   }
-  if (user === '') {
+  if (username === '') {
     return <Navigate to="/"/>
   }
   return (
     <div className="App">
-      <p>Hello {user}!</p>
+      <p>Hello {username}!</p>
       <Link to="/">
         <Button>Logout</Button>
       </Link>

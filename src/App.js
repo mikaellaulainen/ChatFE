@@ -6,13 +6,14 @@ import Logged from './pages/Logged'
 import Register from './pages/Register'
 
 const App = () => {
-  const [user,setUser] = useState('')
+  const [username,setUsername] = useState('')
+  const [password,setPassword] = useState('')
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout/>}>
-          <Route index element={<Home user={user} handleUser={({ target }) => setUser(target.value)}/>}/>
-          <Route path="logged" element={<Logged user={user}/>}/>
+          <Route index element={<Home username={username} handleUsername={({ target }) => setUsername(target.value)} password={password} handlePassword= {({ target }) => setPassword(target.value)}/>}/>
+          <Route path="logged" element={<Logged username={username}/>}/>
           <Route path="register" element={<Register/>}/>
         </Route>
       </Routes>
