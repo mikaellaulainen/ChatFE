@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import { Link, Navigate } from 'react-router-dom'
 import Message from '../components/Message'
 import chatService from '../services/chatting'
+import { Row, Col } from 'react-bootstrap'
 
 const Logged = ({ username }) => {
   const [messageToSend,setMessageToSend] = useState('')
@@ -43,8 +44,10 @@ const Logged = ({ username }) => {
         ))}
       </div>
       <Form className='mx-auto border p-3 col-12 bg-dark chat-input' onSubmit={sendMessage}>
-        <Form.Control type="text" value={messageToSend} onChange={({ target }) => setMessageToSend(target.value)}/>
-        <Button type="submit" className='my-3'>Send</Button>
+        <Row>
+          <Form.Control as={Col} type="text" value={messageToSend} onChange={({ target }) => setMessageToSend(target.value)}/>
+          <Button type="submit">Send</Button>
+        </Row>
       </Form>
     </div>
   )
