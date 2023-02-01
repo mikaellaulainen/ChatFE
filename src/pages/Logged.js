@@ -37,13 +37,15 @@ const Logged = ({ username }) => {
       <Link to="/">
         <Button>Logout</Button>
       </Link>
-      <Form className='my-3 mx-auto border p-3 col-11 bg-dark' onSubmit={sendMessage}>
-        <Form.Control as="textarea" rows={2} type="text" value={messageToSend} onChange={({ target }) => setMessageToSend(target.value)}/>
+      <div className='message-box'>
+        {messages.map(data => (
+          <Message key={data._id} data={data}/>
+        ))}
+      </div>
+      <Form className='mx-auto border p-3 col-12 bg-dark chat-input' onSubmit={sendMessage}>
+        <Form.Control type="text" value={messageToSend} onChange={({ target }) => setMessageToSend(target.value)}/>
         <Button type="submit" className='my-3'>Send</Button>
       </Form>
-      {messages.map(data => (
-        <Message key={data._id} data={data}/>
-      ))}
     </div>
   )
 }

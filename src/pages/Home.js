@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import loginService from '../services/login'
 import { useState } from 'react'
+import { BsChatRightText } from 'react-icons/bs'
 const Home = ({ username,handleUsername, password, handlePassword }) => {
   const [user,setUser] = useState(null)
   const login = async (e) => {
@@ -23,8 +24,12 @@ const Home = ({ username,handleUsername, password, handlePassword }) => {
     )
   }else{
     return (
-      <>
-        <Form className='mx-auto mt-3 p-3 border col-6' onSubmit={login}>
+      <div className='home'>
+        <Form className='login-form mx-auto p-3 col-12 col-sm-9 col-md-6' onSubmit={login}>
+          <div className='text-center'>
+            <BsChatRightText size={80}/>
+            <p>ChatDat</p>
+          </div>
           <Form.Group className='mb-3'>
             <Form.Control type="text" placeholder="Username" value={username} onChange={handleUsername}/>
           </Form.Group>
@@ -32,13 +37,13 @@ const Home = ({ username,handleUsername, password, handlePassword }) => {
             <Form.Control type="password" placeholder='Password' value={password} onChange={handlePassword}/>
           </Form.Group>
           <div className='text-center'>
-            <Button type='submit' className='mt-3 w-75'>Login</Button>
+            <Button type='submit' variant='dark' className='login-btn mt-3 w-75'>Login</Button>
             <Link className='no-account' to="/register">
               <p className='mt-3'>Dont have account? Register!</p>
             </Link>
           </div>
         </Form>
-      </>
+      </div>
     )
   }
 }

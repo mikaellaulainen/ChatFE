@@ -1,7 +1,8 @@
 const Message = ({ data }) => {
   return (
     <div className="mx-auto col-11 border mt-2">
-      <p>{data.user} said: {data.message}</p>
+      <p>{data.user}</p>
+      <p>{data.message}</p>
     </div>
   )
 }
